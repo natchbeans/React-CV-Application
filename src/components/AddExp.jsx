@@ -4,10 +4,18 @@ function AddExp(){
     const [companyName, setCompanyName] = useState("");
     const [posTitle, setPosTitle] = useState("");
     const [jobExp, setJobExp] = useState("");
-    const [dateRange, setDateRange] = useState("");
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
+
+    function handleSubmit(e){
+        e.preventDefault(); //prevents page reload
+        console.log("Form submitted");
+        console.log({companyName, posTitle, jobExp, startDate, endDate});
+        //just logging data it goes nowhere yet
+    }
 
     return (
-        <div>
+        <form onSubmit={handleSubmit}>
             <input 
                 type='text'
                 value={companyName}
@@ -27,11 +35,27 @@ function AddExp(){
 
             </textarea>
 
+            <input 
+                type='date'
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+            />
+
+            <input 
+                type='date'
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+            />
+
 
             <p>Company Name: {companyName}</p>
             <p>Job Title: {posTitle}</p>
             <p>Job Experience: {jobExp}</p>
-        </div>
+            <p>Date Range: {startDate} to {endDate}</p>
+
+            <button type="submit">Save</button>
+            
+        </form>
     );
 }
 

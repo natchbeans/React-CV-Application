@@ -6,8 +6,15 @@ function GeneralInfo(){
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
 
+    function handleSubmit(e){
+        e.preventDefault(); //prevents page reload
+        console.log("Form submitted");
+        console.log({name, phone, email});
+        //just logging data it goes nowhere yet
+    }
+
     return (
-        <div>
+        <form onSubmit={handleSubmit}>
             
             <label>Name: </label>
             <input
@@ -38,7 +45,9 @@ function GeneralInfo(){
                 <p>Phone: {phone}</p>
             </div>
 
-        </div>
+            <button type="submit">Save</button>
+
+        </form>
     );
 }
 

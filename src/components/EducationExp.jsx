@@ -6,8 +6,15 @@ function EducationExp(){
     const [major, setMajor] = useState("");
     const [studyDate, setStudyDate] = useState("");
 
+    function handleSubmit(e){
+        e.preventDefault(); //prevents page reload
+        console.log("Form submitted");
+        console.log({schoolName, major, studyDate});
+        //just logging data it goes nowhere yet
+    }
+
     return (
-        <div>
+        <form onSubmit={handleSubmit}>
             <input 
                 list="schools"
                 value={schoolName} //expects schoolName state
@@ -46,7 +53,9 @@ function EducationExp(){
                 <p>Study Date: {studyDate}</p>
             </div>
 
-        </div>
+            <button type="submit">Save</button>
+
+        </form>
     );
 
 }
