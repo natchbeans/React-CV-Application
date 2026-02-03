@@ -1,16 +1,20 @@
 import {useState} from 'react'
 
-function EducationExp(){
+function EducationExp({data, onSave}){
 
-    const [schoolName, setSchoolName] = useState("");
-    const [major, setMajor] = useState("");
-    const [studyDate, setStudyDate] = useState("");
+    const [schoolName, setSchoolName] = useState(data.schoolName);
+    const [major, setMajor] = useState(data.major);
+    const [studyDate, setStudyDate] = useState(data.studyDate);
 
     function handleSubmit(e){
         e.preventDefault(); //prevents page reload
-        console.log("Form submitted");
-        console.log({schoolName, major, studyDate});
-        //just logging data it goes nowhere yet
+        
+        onSave({
+            schoolName: schoolName,
+            major: major,
+            studyDate: studyDate,
+        });
+        console.log('Data sent to App!')
     }
 
     return (

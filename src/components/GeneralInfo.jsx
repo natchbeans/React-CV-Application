@@ -1,16 +1,21 @@
 //Add general information, name, email, phone number
 import { useState } from "react";
 
-function GeneralInfo(){
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
+function GeneralInfo({data, onSave}){
+    const [name, setName] = useState(data.name);
+    const [email, setEmail] = useState(data.email);
+    const [phone, setPhone] = useState(data.phone);
 
     function handleSubmit(e){
         e.preventDefault(); //prevents page reload
-        console.log("Form submitted");
-        console.log({name, phone, email});
-        //just logging data it goes nowhere yet
+        
+        onSave({
+            name: name,
+            email: email,
+            phone: phone,
+        });
+
+        console.log('Data sent to App!')
     }
 
     return (

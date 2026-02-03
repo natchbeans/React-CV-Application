@@ -1,17 +1,23 @@
 import {useState} from 'react'
 
-function AddExp(){
-    const [companyName, setCompanyName] = useState("");
-    const [posTitle, setPosTitle] = useState("");
-    const [jobExp, setJobExp] = useState("");
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
+function AddExp({data, onSave}){
+    const [companyName, setCompanyName] = useState(data.companyName); //Create local state from props
+    const [posTitle, setPosTitle] = useState(data.posTitle);
+    const [jobExp, setJobExp] = useState(data.jobExp);
+    const [startDate, setStartDate] = useState(data.startDate);
+    const [endDate, setEndDate] = useState(data.endDate);
 
     function handleSubmit(e){
         e.preventDefault(); //prevents page reload
-        console.log("Form submitted");
-        console.log({companyName, posTitle, jobExp, startDate, endDate});
-        //just logging data it goes nowhere yet
+        
+        onSave({ //setJobExp in App, updating state, sends data back up to App
+            companyName: companyName,
+            posTitle: posTitle,
+            jobExp: jobExp,
+            startDate: startDate,
+            endDate: endDate,
+        });
+        console.log('Data sent to App!');
     }
 
     return (
